@@ -11,6 +11,17 @@
 	<tiles:putAttribute name="pageHTMLHeadContent">&nbsp;</tiles:putAttribute>
 	
 	<tiles:putAttribute name="pageBody">
+		<script>
+			var app = angular.module('myAppt', []);
+			app.controller('apptInfo', function($scope) {
+			    $scope.name = "John",
+			    $scope.phoneNumber = "111-111-1111"
+			    $scope.myVar = false;
+			    $scope.toggle = function() {
+			        $scope.myVar = !$scope.myVar;
+			    }
+			});
+		</script>
 		<div>
 			<div id="container-fluid">
 				<div class="row">
@@ -29,7 +40,7 @@
 						<br/><br/>	
 					</div>
 					
-					<div data-ng-app="myAppt" data-ng-init="quantity=1;price=5" class="col-sm-4">
+					<div data-ng-app="myAppt" ng-controller="apptInfo" class="col-sm-4">
 
 						<h2>Add Appointment</h2>
 						
@@ -38,11 +49,18 @@
 						Service: <input type="text" ng-model="service">
 						Service by: <input type="text" ng-model="serviceBy">
 						Time: <input type="text" ng-model="time">
+						<br/>
+						<br/><br/>
+						<br/><br/>
 						
-						<button ng-click="count = count + 1" ng-init="count=0">
-						  Submit
-						</button>
 					</div>
+					
+					<div class="col-sm-2">
+						<button ng-click="count = count + 1" ng-init="count=0">
+							  Submit
+							  
+							</button>
+						</div>
 				</div>
 			</div>			
 		</div>

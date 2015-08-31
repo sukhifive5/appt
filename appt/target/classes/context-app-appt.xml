@@ -10,7 +10,7 @@
 	<!-- =========== Enable Auto Wiring =========== -->
 	<context:annotation-config />
 
-	<!-- =========== Configurer that replaces MavenProject: org.appt:appt:1.0 @ C:\\Users\\work\\appt\\pom.xml placeholders w/ property file values ================ -->
+	<!-- =========== Configurer that replaces MavenProject: org.appt:appt:1.0 @ C:\\Users\\work\\git\\appt\\pom.xml placeholders w/ property file values ================ -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
