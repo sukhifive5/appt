@@ -1,0 +1,141 @@
+<!DOCTYPE project>
+
+<project name="appt-tomcat">
+
+  	<!-- Project home propety -->
+  	<property name="PROJECT_HOME"     	 	value="."/>
+  		
+    <!-- Read Local Properties -->
+ 	<property file="${PROJECT_HOME}/src/test/resources/local.properties"/>
+ 		
+	<!-- Define Maven Excecutable -->
+	<property name="maven.executable" 		value="${maven.home}/bin/mvn.cmd" />
+	
+  	<!-- Build Path for Tomcat Ant Tasks from Tomcat libraries -->
+	<path id="catalina-ant-classpath">
+	    <fileset dir="${tomcat.home}/lib">
+			<include name="catalina-ant.jar"/>
+			<include name="tomcat-coyote.jar"/>
+	      	<include name="tomcat-util.jar"/>
+	  	</fileset>
+	    <fileset dir="${tomcat.home}/bin">
+			<include name="tomcat-juli.jar"/>
+	    </fileset>
+	</path>
+
+  	<!-- define tomcat ant tasks -->
+	<taskdef name="catalina-deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-list" classname="org.apache.catalina.ant.ListTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-reload" classname="org.apache.catalina.ant.ReloadTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-findleaks" classname="org.apache.catalina.ant.FindLeaksTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-resources" classname="org.apache.catalina.ant.ResourcesTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-start" classname="org.apache.catalina.ant.StartTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-stop" classname="org.apache.catalina.ant.StopTask" classpathref="catalina-ant-classpath"/>
+	<taskdef name="catalina-undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="catalina-ant-classpath"/>
+
+
+	<!-- task definitions -->
+	<target name="tc-start-webapp">
+    	<catalina-start 
+    		url="${tomcat.manager.url}" 
+    		username="${tomcat.username}" 
+    		password="${tomcat.password}" 
+    		path="/${webapp.name}"/>
+	</target>
+	
+	<target name="tc-reload-webapp">
+    	<catalina-reload 
+    		url="${tomcat.manager.url}" 
+    		username="${tomcat.username}" 
+    		password="${tomcat.password}" 
+    		path="/${webapp.name}"/>
+	</target>
+	
+ 	<target name="tc-stop-webapp">
+       <catalina-stop 
+       		url="${tomcat.manager.url}"
+			username="${tomcat.username}"
+			password="${tomcat.password}"
+			path="/${webapp.name}"
+			failonerror="false"/>
+	</target>
+
+	<target name="tc-deploy-webapp">
+    	<catalina-deploy 
+    		url="${tomcat.manager.url}"
+			username="${tomcat.username}"
+  			password="${tomcat.password}"
+			path="/${webapp.name}"
+			war="file:${PROJECT_HOME}/target/${webapp.name}.war"/>
+	</target>
+	
+	<target name="deploy_local">
+	    <echo>Deploying .war to local Tomcat</echo>
+	    <copy file="${PROJECT_HOME}/target/${webapp.name}.war" todir="${tomcat.home}/webapps">
+	    </copy>
+	</target>
+	
+	
+	<target name="tc-undeploy-webapp">
+    	<catalina-undeploy 
+    		url="${tomcat.manager.url}"
+			username="${tomcat.username}"
+ 			password="${tomcat.password}"
+			path="/${webapp.name}"
+			failonerror="false"/>
+	</target>
+	
+	<target name="mvn-clean">
+		<exec executable="${maven.executable}">
+			<arg value="clean" />
+		</exec>
+	</target>
+		
+	<target name="mvn-package">
+		<exec executable="${maven.executable}">
+			<arg value="package" />
+		</exec>
+	</target>
+	
+	<target name="mvn-test">
+		<exec executable="${maven.executable}">
+			<arg value="test" />
+		</exec>
+	</target>
+	
+	<target name="mvn-clean-package">
+		<exec executable="${maven.executable}">
+			<arg value="clean" />
+			<arg value="test" />
+		</exec>
+	</target>
+	
+	<target name="mvn-war-war">
+		<exec executable="${maven.executable}">
+			<arg value="war:war" />
+		</exec>
+	</target>
+	
+	<target name="mvn-war-inplace">
+		<exec executable="${maven.executable}">
+			<arg value="war:inplace" />
+		</exec>
+	</target>
+	
+	<target name="appt-war-deploy">
+		<antcall target="mvn-war-war" />
+		<antcall target="tc-deploy-webapp" />
+	</target>
+	
+	<target name="appt-war-inplace-reload">
+		<antcall target="mvn-clean-package" />
+		<antcall target="mvn-war-inplace" />
+		<antcall target="tc-reload-webapp" />
+	</target>
+	
+	<target name="appt-war-local-deploy">
+			<antcall target="mvn-package" />
+			<antcall target="deploy_local" />
+			<antcall target="tc-reload-webapp" />
+		</target>
+</project>

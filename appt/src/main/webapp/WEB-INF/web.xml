@@ -1,0 +1,73 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	      version="3.0">
+ 
+  	<display-name>Appt</display-name>
+  	<description>Appt</description>
+  
+  	<!-- Tiles Config Servlet -->
+	<servlet>
+    	<servlet-name>tiles</servlet-name>
+    	<servlet-class>org.apache.tiles.web.startup.TilesServlet</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+	</servlet>
+    
+    <!-- Spring Config Servlet(s) -->
+    <servlet>
+      <servlet-name>context-appt-web</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:context-appt-web-servlet.xml</param-value>
+      </init-param>
+      <load-on-startup>2</load-on-startup>
+   </servlet>   
+    <servlet-mapping>
+      <servlet-name>context-appt-web</servlet-name>
+      <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>context-appt-web</servlet-name>
+      <url-pattern>*.jhtml</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Spring Application Context Files -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:context-app-appt.xml  
+		</param-value>
+	</context-param>
+	
+	<listener>
+	   <listener-class>
+	      org.springframework.web.context.ContextLoaderListener
+	   </listener-class>
+	</listener>
+
+	<!--
+	  - Log4jConfigListener will export a system property with specified
+	  - name below to use in log4j.properties file so paths do not have to be hard coded.
+	  -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>webApp.root</param-value>
+	</context-param>
+	
+    <welcome-file-list>
+        <welcome-file>testMenu.jhtml</welcome-file>
+    </welcome-file-list>
+    
+    <error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/jsp/error.jsp</location>
+	</error-page>
+	
+    <session-config>
+    	<!-- 30 minute session time out -->
+      	<session-timeout>30</session-timeout>
+    </session-config>
+    
+</web-app>
