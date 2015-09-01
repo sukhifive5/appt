@@ -22,6 +22,7 @@
 			    }
 			});
 		</script>
+		
 		<div>
 			<div id="container-fluid">
 				<div class="row">
@@ -39,7 +40,8 @@
 						<br/><br/>
 						<br/><br/>	
 					</div>
-					
+					<ng-include src="template"></ng-include>
+					<script type="text/ng-template" id="page1">
 					<div data-ng-app="myAppt" ng-controller="apptInfo" class="col-sm-4">
 
 						<h2>Add Appointment</h2>
@@ -54,7 +56,7 @@
 						<br/><br/>
 						
 					</div>
-					
+					</script>
 					<div class="col-sm-2">
 						<button ng-click="count = count + 1" ng-init="count=0">
 							  Submit
