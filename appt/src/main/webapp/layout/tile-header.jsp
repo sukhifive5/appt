@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">View Appointments <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Create Appointment</a></li>
+        <li><a  ng-click="template='page2'">Create Appointment</a></li>
         </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
