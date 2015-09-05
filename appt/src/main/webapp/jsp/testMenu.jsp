@@ -50,12 +50,26 @@
 			            // route for the home page
 			            .when('/CreateAppointment', {
 			                templateUrl : 'CreateAppointment.jhtml',
-			                controller  : 'myCtrl'
+			                controller  : 'myCtrl',
+			                preload: true
 			            })
 
 			           
 			    });
-				
+				//pre loading of templates
+			    app.run([
+                       '$route', '$templateCache', '$http', (function ($route, $templateCache, $http) {
+                           var url;
+                           for (var i in $route.routes) {
+                               if ($route.routes[i].preload) {
+                                   if (url = $route.routes[i].templateUrl) {
+                                       $http.get(url, { cache: $templateCache });
+                                   }
+                               }
+                           }
+                       })
+                   ]);
+			    
 			    app.controller('myCtrl', function($scope) {
 				    $scope.firstName= "John";
 				    $scope.lastName= "Doe";
