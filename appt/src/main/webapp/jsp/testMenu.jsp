@@ -53,6 +53,10 @@
 			                controller  : 'myCtrl',
 			                preload: true
 			            })
+			            .when('/ViewAppointment', {
+			                templateUrl : 'ViewAppointments.jhtml',
+			                preload: false
+			            })
 
 			           
 			    });
@@ -75,6 +79,8 @@
 				    $scope.lastName= "Doe";
 				    
 				});
+			    
+			    
 			</script>
 	</tiles:putAttribute>
 	
