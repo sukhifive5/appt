@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/dateUtils.js"></script> -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/moment.min.js"></script>
@@ -34,8 +34,16 @@
 	
 	
 
+     <!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+
+
+    <!-- Angular Material Javascript now available via Google CDN; version 0.10 used here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
     
-    
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <meta name="viewport" content="initial-scale=1" />
     
  
@@ -49,6 +57,12 @@
 	
 	<!-- Tiles Attribute for Page Specific Header Content -->
  	<tiles:insertAttribute name="pageHTMLHeadContent" />
+ 	<style type="text/css">
+ 	body { padding-top: 70px; }
+ 	
+ 	#calendar { padding-top: 20px; }
+ 	</style>
+ 	
 </head>
 
 <body>
