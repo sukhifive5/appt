@@ -4,8 +4,8 @@
     <i class="fa fa-angle-right" ng-click="next()"></i>
 </div>
 <div class="week names">
-    <span class="day">Sun</span>
-    <span class="day">Mon</span>
+    <span class="day">Sunday</span>
+    <span class="day">Monday</span>
     <span class="day">Tue</span>
     <span class="day">Wed</span>
     <span class="day">Thu</span>
