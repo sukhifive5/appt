@@ -64,16 +64,22 @@
 			        $scope.day = moment();
 			    });
 			
+			    app.run(function($rootScope, $templateCache) {
+			    	   $rootScope.$on('$viewContentLoaded', function() {
+			    	      $templateCache.removeAll();
+			    	   });
+			    	});
+			    
 			    app.directive("calendar", function() {
+			    	
 			        return {
 			            restrict: "E",
-
+			            templateUrl: "calendar.jhtml",
 			            scope: {
 			                selected: "=",
 
 			            },
 			            link: function(scope) {
-			                //console.log('test');
 			                scope.selected = _removeTime(scope.selected || moment());
 			                scope.month = scope.selected.clone();
 
@@ -103,7 +109,7 @@
 
 			            }
 			        };
-
+			        
 			        function _removeTime(date) {
 			            return date.day(0).hour(0).minute(0).second(0).millisecond(0);
 			        }
@@ -138,6 +144,9 @@
 			    });
 			    
 			</script>
+			
+			
+
 	</tiles:putAttribute>
 	
 </tiles:insertDefinition>
