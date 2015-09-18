@@ -27,7 +27,7 @@ calendar {
     display:block;
     .border-box;
     background:white;
-    width:1000px;
+    width:100%;
     border:solid 1px @border-colour;
     margin-bottom:10px;
 
