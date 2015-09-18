@@ -30,6 +30,7 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
 	
 	
+	   
 	
 	
 	
@@ -44,6 +45,7 @@
     
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    
     <meta name="viewport" content="initial-scale=1" />
     
  
@@ -73,10 +75,10 @@
 			<tiles:insertAttribute name="pageHeader" />
 		</div>
 
-		<div id="page">
+		<div class="center-block" id="page">
 			<div id="container-fluid">
 					<div class="row">
-						<div id="content" class="col-sm-12">
+						<div id="content" class="container">
 							<tiles:insertAttribute name="pageBody" />
 						</div>
 					</div>
