@@ -46,6 +46,11 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     
+    
+    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/appt.css" />
+    
+    
     <meta name="viewport" content="initial-scale=1" />
     
  

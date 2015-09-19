@@ -1,24 +1,23 @@
-<div class="center">
-<select name="Employees" >
-  <option value="Employee1">Employee1</option>
-  <option value="Employee2">Employee2</option>
-  <option value="Employee3">Employee3</option>
-  <option value="Employee4">Employee4</option>
-</select>
-</div>
-<calendar selected="day">
-
-</calendar>
-
-
-<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js"></script>        
-
-
-
-
-<style type="text/less">
-		
+.center {
+ text-align: center;
+ vertical-align: middle;
+ background-color: #F3F3F3;
+ margin-bottom: 1%;
+ box-shadow: 1px 1px 1px 1px #888888;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+    margin: 5px;
+}
+input {
+  display: inline-block;
+  float: left;
+  margin: 5px;
+}
 
 .vertical-centre (@height) {
     height:@height;
@@ -40,7 +39,7 @@ calendar {
     background:white;
     width:100%;
     border:solid 1px @border-colour;
-    margin-bottom:5%;
+    margin-bottom:1%;
 	box-shadow: 1px 1px 1px 1px #888888;
 
     @secondary-colour:#2875C7;
@@ -146,5 +145,3 @@ calendar {
 		
     }
 }
-</style>
-		
