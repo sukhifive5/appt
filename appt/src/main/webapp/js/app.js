@@ -14,8 +14,8 @@ var app = angular.module('myApp', ['ngRoute']);
 			                templateUrl : 'ViewAppointments.jhtml',
 			                preload: false
 			            })
-			            .when('/DayView', {
-			                templateUrl : 'dayView.jhtml',
+			            .when('/MonthView', {
+			                templateUrl : 'monthView.jhtml',
 			                controller  : 'calendarDemo',
 			                preload: false
 			            })
