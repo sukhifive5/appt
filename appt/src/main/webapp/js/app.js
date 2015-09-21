@@ -19,6 +19,11 @@ var app = angular.module('myApp', ['ngRoute']);
 			                controller  : 'calendarDemo',
 			                preload: false
 			            })
+			            .when('/DayView', {
+			                templateUrl : 'dayView.jhtml',
+			                controller  : 'dayView',
+			                preload: false
+			            })
 
 			           
 			    });
@@ -45,6 +50,13 @@ var app = angular.module('myApp', ['ngRoute']);
 			    app.controller("calendarDemo", function($scope) {
 			        $scope.day = moment();
 			    });
+			    
+			    app.controller('dayView', function($scope) {
+			    	$scope.name = 'Superhero';
+				    $scope.dayHours=[8,9,10,11,12,1,2,3,4,5];
+				    $scope.employees = ["Employee 1", "Employee 2"];
+				    
+				});
 			
 			    app.run(function($rootScope, $templateCache) {
 			    	   $rootScope.$on('$viewContentLoaded', function() {
@@ -125,3 +137,8 @@ var app = angular.module('myApp', ['ngRoute']);
 			            return days;
 			        }
 			    });
+			    
+			    
+			
+
+		
